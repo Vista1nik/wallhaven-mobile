@@ -23,6 +23,9 @@ const WallpaperFeed = (
 
             pagingEnabled={true}
             snapToAlignment="center"
+
+            maxToRenderPerBatch={2}
+            initialNumToRender={2}
         />
     )
 }
