@@ -1,4 +1,4 @@
-import { FlatList } from "react-native"
+import { FlatList } from "react-native-gesture-handler"
 import { Wallpaper } from "../../lib/types/Wallpaper"
 
 import WallpaperItem from "./WallpaperItem"
@@ -23,6 +23,7 @@ const WallpaperFeed = (
 
             pagingEnabled={true}
             snapToAlignment="center"
+            decelerationRate={'fast'}
 
             maxToRenderPerBatch={2}
             initialNumToRender={2}

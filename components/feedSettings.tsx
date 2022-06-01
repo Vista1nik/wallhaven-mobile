@@ -1,11 +1,13 @@
 import { BottomSheetModal, BottomSheetModalProvider } from "@gorhom/bottom-sheet"
 import React, { useRef } from "react"
-import { Pressable, View, Text, Dimensions } from "react-native"
+import { Pressable, View, Text, Dimensions, Platform } from "react-native"
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "./ui/Button";
 import { Toggle, ToggleButton } from "./ui/Toggle";
+import Search from "./ui/Search";
+import Select from "./ui/Select";
 
 const FeedSettings = React.forwardRef(({}, ref) => {
     
@@ -13,7 +15,7 @@ const FeedSettings = React.forwardRef(({}, ref) => {
         <BottomSheetModalProvider>
                 <BottomSheetModal 
                     ref={ref as any}
-                    snapPoints={['25%', '50%']}
+                    snapPoints={Platform.OS === 'ios' ? ['67%'] : ['64%']}
                     handleIndicatorStyle={{
                         backgroundColor: 'rgba(255, 255, 255, 0.25)',
                     }}
@@ -33,9 +35,9 @@ const FeedSettings = React.forwardRef(({}, ref) => {
                     backgroundComponent={
                         ({style}: {style: any}) => (
                             <LinearGradient
-                                colors={['#292c2f', 'rgb(34,34,34)']}
+                                colors={['#282C2F', '#222222']}
                                 start={{x: 0, y: 0}}
-                                end={{x: 0, y: 0.1}}
+                                end={{x: 0, y: 1}}
                                 style={{
                                     borderRadius: 15,
                                     ...style
@@ -44,6 +46,9 @@ const FeedSettings = React.forwardRef(({}, ref) => {
                         )
                     }
                 >
+                    <Search style={{
+                        marginBottom: 10,
+                    }} />
                     <Toggle style={{
                         marginBottom: 10,
                     }}>
@@ -64,6 +69,54 @@ const FeedSettings = React.forwardRef(({}, ref) => {
                         <ToggleButton variant="green">SFW</ToggleButton>
                         <ToggleButton variant="yellow">Sketchy</ToggleButton>
                     </Toggle>
+                    <View 
+                        style={{
+                            flexDirection: 'row',
+                            marginBottom: 10,
+                        }}
+                    >
+                        <Select 
+                            name="Resolution"
+                            style={{
+                                marginRight: 2.5,
+                            }}
+                        />
+                        <Select
+                            name="Ratio"
+                            style={{
+                                marginLeft: 2.5,
+                            }}
+                        />
+                    </View>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            marginBottom: 10,
+                        }}
+                    >
+                        <Select
+                            name="Color"
+                        />
+                    </View>
+                    <View 
+                        style={{
+                            flexDirection: 'row',
+                            marginBottom: 10,
+                        }}
+                    >
+                        <Select
+                            name="Sort"
+                            style={{
+                                marginRight: 2.5,
+                            }}
+                        />
+                        <Select
+                            name="Range"
+                            style={{
+                                marginLeft: 2.5,
+                            }}
+                        />
+                    </View>
                     <Button variant="primary" style={{
                         marginBottom: 10,
                     }}>Apply</Button>

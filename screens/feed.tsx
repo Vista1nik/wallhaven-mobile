@@ -7,7 +7,7 @@ import TransparentIconButton from "../components/ui/TransparentIconButton"
 import WallpaperFeed from "../components/WallpaperFeed"
 import useSearch from "../lib/hooks/useSearch"
 
-const Feed = () => {
+const Feed = ({route, navigation }: any) => {
     const insets = useSafeAreaInsets()
     const feedSettingsModalRef = useRef<BottomSheetModal>();
 
@@ -31,14 +31,22 @@ const Feed = () => {
     }
 
     return (
-        <View>
+        <View style={{
+            backgroundColor: '#171717',
+        }}>
             <View style={{
                 position: 'absolute',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
                 top:  12 + insets.top,
                 left: 12,
+                right: 12,
                 zIndex: 999
             }}>
-                <TransparentIconButton icon="md-settings" onPress={() => {
+                <TransparentIconButton icon="menu" onPress={() => {
+                    navigation.push('Menu')
+                }} />
+                <TransparentIconButton icon="search" onPress={() => {
                     feedSettingsModalRef.current?.present()
                 }} />
             </View>

@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native"
 import { LinearGradient } from "expo-linear-gradient"
 //@ts-ignore
-import InsetShadow from 'react-native-inset-shadow'
+import InsetShadow from './InsetShadow';
 
 const ToggleButton = (
     {
@@ -60,7 +60,7 @@ const ToggleButton = (
                     shadowOpacity: 0.75,
                     shadowRadius: 3,
 
-                    elevation: 2,
+                    elevation: 1,
                 }}>
                     {children}
                 </Text>
@@ -89,18 +89,17 @@ const Toggle = (
             shadowRadius: 0,
 
             elevation: 2,
+            ...style
         }}>
             <InsetShadow
                 shadowColor="rgba(0, 0, 0, 0.4)" 
                 containerStyle={{
                     borderRadius: 5,
                     height: 'auto',
-                    ...style
                 }}
             >
                 <View style={{
                     flexDirection: "row",
-                    gap: 5,
                     backgroundColor: 'rgba(30,30,30,.5)',
                     paddingVertical: 6,
                     paddingHorizontal: 4,
