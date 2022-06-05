@@ -15,7 +15,7 @@ const Button = (
     }
 ) => {
     return (
-        <TouchableOpacity style={style}>
+        <TouchableOpacity style={style} onPress={onPress}>
             <LinearGradient
                 colors={
                     variant === 'primary' ? ['#bddb7e', '#85a936'] : ['#275660', '#183640']

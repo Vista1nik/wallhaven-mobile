@@ -8,24 +8,29 @@ const ToggleButton = (
         children,
         style,
         toggled,
-        variant,
+        variant = 'gray',
         disabled,
+        onPress,
     } : {
-        children: React.ReactNode,
+        children: any,
         style: any,
         toggled: boolean,
         variant: "gray" | "green" | "yellow" | "red" | "purple",
         disabled: boolean,
+        onPress?: () => void,
     }
 ) => {
     return (
-        <TouchableOpacity style={{
-            flex: 1,
-            borderRadius: 4,
-            marginHorizontal: 2,
-            height: 43,
-            ...style
-        }}>
+        <TouchableOpacity 
+            onPress={onPress}
+            style={{
+                flex: 1,
+                borderRadius: 4,
+                marginHorizontal: 2,
+                height: 43,
+                ...style
+            }}
+        >
             <LinearGradient
                 colors={
                     disabled ? ["#404040", "#292929"] :
