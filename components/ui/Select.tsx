@@ -9,6 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Button from './Button';
 import { ToggleButton } from './Toggle';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import MaskedView from '@react-native-masked-view/masked-view';
 
 const Select = (
     {
@@ -82,20 +83,30 @@ const Select = (
                     )
                 }
             >
-                <BottomSheetScrollView>
-                    {children}
-                    <Button
-                        variant='secondary'
-                        style={{
-                            marginBottom: insets.bottom
-                        }}
-                        onPress={() => {
-                            selectRef.current?.dismiss();
-                        }}
-                    >
-                        Close
-                    </Button>
-                </BottomSheetScrollView>
+                <MaskedView
+                    maskElement={<LinearGradient
+                        style={{ flex: 1 }}
+                        start={[0, 0.85]}
+                        end={[0, 1]}
+                        colors={['black', 'transparent']}
+                    />}
+                    style={{ flex: 1, flexDirection: 'row', height: '100%' }}
+                >
+                    <BottomSheetScrollView style={{marginBottom: 12}}>
+                        {children}
+                    </BottomSheetScrollView>
+                </MaskedView>
+                <Button
+                    variant='secondary'
+                    style={{
+                        marginBottom: Platform.OS === 'ios' ? insets.bottom : insets.bottom + 12
+                    }}
+                    onPress={() => {
+                        selectRef.current?.dismiss();
+                    }}
+                >
+                    Close
+                </Button>
             </BottomSheetModal>
             <InsetShadow
                 shadowColor="rgba(0, 0, 0, 0.4)" 
@@ -222,7 +233,7 @@ Select.Option = (
         >
             <LinearGradient
                 colors={
-                    !toggled ? ["#404040", "#292929"] :
+                    disabled ? ["#404040", "#292929"] :
                     variant === "gray" ? ["#777", "#444"] :
                     variant === "green" ? ["#595", "#353"] :
                     variant === "yellow" ?["#995", "#553"] :

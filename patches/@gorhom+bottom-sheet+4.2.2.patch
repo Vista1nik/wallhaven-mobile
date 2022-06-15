@@ -1,0 +1,20 @@
+diff --git a/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx b/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
+index e21a3ca..23fc399 100644
+--- a/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
++++ b/node_modules/@gorhom/bottom-sheet/src/components/bottomSheet/BottomSheet.tsx
+@@ -77,6 +77,7 @@ import {
+ import type { BottomSheetMethods, Insets } from '../../types';
+ import type { BottomSheetProps, AnimateToPositionType } from './types';
+ import { styles } from './styles';
++import ReText from '../bottomSheetDebugView/ReText';
+ 
+ Animated.addWhitelistedUIProps({
+   decelerationRate: true,
+@@ -1647,6 +1648,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
+                   handleIndicatorStyle={_providedHandleIndicatorStyle}
+                 />
+               </Animated.View>
++              <ReText style={{ position: 'absolute', opacity: 0, marginLeft: -10000, display: "none" }} text={""} value={animatedSheetState} />
+               {/* <BottomSheetDebugView
+                 values={{
+                   // topInset,

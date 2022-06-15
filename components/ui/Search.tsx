@@ -22,7 +22,7 @@ const Search = ({ onChange, value, style }: { onChange: (e: any) => void, value:
                 <TextInput
                     placeholder="Search..."
                     placeholderTextColor="#9a9a9a"
-                    onChange={onChange}
+                    onChangeText={onChange}
                     value={value}
                     style={{
                         padding: 12,
